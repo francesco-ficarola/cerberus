@@ -24,7 +24,7 @@ Cerberus can be executed on Windows as well (just install dependencies), but you
 
 ### What are the available options?
 
-By default Cerberus runs by using this values:
+By default Cerberus runs by using these values:
 
 * Total requests = 10000
 * Concurrent requests = 3000
