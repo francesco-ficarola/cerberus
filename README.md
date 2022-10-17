@@ -26,8 +26,8 @@ Cerberus can be executed on Windows as well (just install dependencies), but you
 
 Cerberus tries to establish many concurrent connections, thus, to properly work, you have to unlock your OS ulimit values (locked by default). In doing so, Cerberus can use all available physical and logical capacities of your system and network, without any restriction. Run the following commands to unlock your ulimits, then check their values:
 
-    ~# ulimit -c unlimited -n 65536 -u unlimited
-    ~# ulimit -a
+    # ulimit -c unlimited -n 65536 -u unlimited
+    # ulimit -a
     
 (Those changes will be lost after your system reboot)
     
@@ -42,7 +42,17 @@ If you want to have **permanent changes**, then modify the *limits.conf* file (u
     
 Reboot your machine, then check the ulimit values by running the following command:
 
-    ~# ulimit -a
+    # ulimit -a
+    
+### Install dependencies and execute Cerberus
+
+After cloning this repository, run the `pip` command to install Cerberus' dependencies:
+
+    $ pip install -r requirements.txt
+    
+Then, run Cerberus by executing *python3*:
+
+    $ python3 cerberus.py -h
 
 ### What are the available options?
 
