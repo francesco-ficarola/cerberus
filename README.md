@@ -22,6 +22,28 @@ I successfully tested Cerberus on Ubuntu and Debian, so likely you won't have an
 
 Cerberus can be executed on Windows as well (just install dependencies), but you have to _unlock_ the equivalent Linux "ulimit" values (is that feasible? I don't know) to send a lot of simultaneous requests.
 
+### First of all, unlock your system ulimit
+
+Cerberus tries to establish many concurrent connections, thus, to properly work, you have to unlock your OS ulimit values (locked by default). In doing so, Cerberus can use all available physical and logical capacities of your system and network, without any restriction. Run the following commands to unlock your ulimits, then check their values:
+
+    ~# ulimit -c unlimited -n 65536 -u unlimited
+    ~# ulimit -a
+    
+(Those changes will be lost after your system reboot)
+    
+If you want to have **permanent changes**, then modify the *limits.conf* file (usually in `/etc/security/limits.conf`):
+
+    *		soft	core		unlimited
+    *		hard	core		unlimited
+    *		soft	nofile		65536
+    *		hard	nofile		65536
+    *		soft	nproc		unlimited
+    *		hard	nproc		unlimited
+    
+Reboot your machine, then check the ulimit values by running the following command:
+
+    ~# ulimit -a
+
 ### What are the available options?
 
 By default Cerberus runs by using these values:
@@ -64,6 +86,14 @@ However, in many cases that configuration is not sufficient (e.g. for platforms 
     ?djwzms=X
 
 where _X_ is the number of the current request. This kind of requests increase the possibility to receive a "fresh" response from the web server. In doing so, the system needs to process the full request, adding more computation load on the server.
+
+### Is Cerberus properly working?
+
+In order to understand if Cerberus is sending the exact amount of connections, you may use the `ss` tool:
+
+    watch -n 0,5 'ss dst <target_ip> | tail -n +2 | wc -l
+    
+In case the number of concurrent connections showed by `ss` is different from your desired value, then first check your ulimit configuration. If ulimit is properly configured, then you likely reached the machine or network physical limit.
 
 ## Warning and License
 
