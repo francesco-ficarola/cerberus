@@ -33,12 +33,12 @@ Cerberus tries to establish many concurrent connections, thus, to properly work,
     
 If you want to have **permanent changes**, then modify the *limits.conf* file (usually in `/etc/security/limits.conf`):
 
-    *		soft	core		unlimited
-    *		hard	core		unlimited
-    *		soft	nofile		65536
-    *		hard	nofile		65536
-    *		soft	nproc		unlimited
-    *		hard	nproc		unlimited
+    *	soft	core	unlimited
+    *	hard	core	unlimited
+    *	soft	nofile	65536
+    *	hard	nofile	65536
+    *	soft	nproc	unlimited
+    *	hard	nproc	unlimited
     
 Reboot your machine, then check the ulimit values by running the following command:
 
@@ -48,7 +48,7 @@ Reboot your machine, then check the ulimit values by running the following comma
 
 After cloning this repository, run the `pip` command to install Cerberus' dependencies:
 
-    $ pip install -r requirements.txt
+    $ pip3 install -r requirements.txt
     
 Then, run Cerberus by executing *python3*:
 
