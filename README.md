@@ -2,7 +2,7 @@
  
 <img  src="https://img.shields.io/badge/Python-3.8-blue">  <img  src="https://img.shields.io/badge/Licence-MIT-yellowgreen">
 
-**Cerberus is another basic stressing tool simulating DDoS attacks, written in Python.**
+**Cerberus is another basic stressing tool simulating HTTP (GET/POST) DDoS attacks, written in Python.**
 
 You may use Cerberus for educational purposes or for testing the robusteness of your IT infrastructure and your web applications resilience. These kind of tests allows you to further fine-tune your security posture.
 
@@ -24,7 +24,7 @@ Cerberus can be executed on Windows as well (just install dependencies), but you
 
 ### First of all, unlock your system ulimit
 
-Cerberus tries to establish many concurrent connections, thus, to properly work, you have to unlock your OS ulimit values (locked by default). In doing so, Cerberus can use all available physical and logical capacities of your system and network, without any restriction. Run the following commands to unlock your ulimits, then check their values:
+Cerberus tries to establish many concurrent HTTP connections, thus, to properly work, you have to unlock your OS ulimit values (locked by default). In doing so, Cerberus can use all available physical and logical capacities of your system and network, without any restriction. Run the following commands to unlock your ulimits, then check their values:
 
     # ulimit -c unlimited -n 65536 -u unlimited
     # ulimit -a
